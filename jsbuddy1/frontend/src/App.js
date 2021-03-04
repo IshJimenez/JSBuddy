@@ -3,12 +3,24 @@ import Strings from './Components/Strings'
 import Login from './Components/Login'
 import Home from './Components/Home'
 import {Switch, Route, Link} from 'react-router-dom'
+import actions from './api'
 import Auth from './Components/Auth'
+import {useEffect, useState} from 'react';
 
 function App() {
-  return (
+
+  const [user, setUser] = useState({})
+
+  useEffect(()=> {
+    actions.getUser().then(res => {
+      setUser(res.data)
+    }).catch(console.error)
+  }, [])
+
+    return (
     <div className="App">
-    <h1>JSBuddy</h1>
+    <h1>JSBuddy </h1>
+    <h4>{user.email}</h4>
     <nav>
       <Link to="/">Home</Link>
       <Link to="/strings">Strings</Link>
