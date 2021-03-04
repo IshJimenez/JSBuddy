@@ -19,13 +19,16 @@ const actions = {
         //This will go get our user every time we refresh 
         return await axios.get(`${baseURL}/user`, resetHead())
     },
+    getMyPosts: async () => {
+        return await axios.get(`${baseURL}/myPosts`, resetHead())
+    },
 
     getAllPosts : async() => {
         return await axios.get(`${baseURL}/getStrings`, resetHead())
     },
 
     addPosts: async(login) => {
-        return await axios.post(`${baseURL}/login`, {login}, resetHead())
+        return await axios.post(`${baseURL}/login`, {post: login}, resetHead())
     },
 
     logIn : async(data) => {

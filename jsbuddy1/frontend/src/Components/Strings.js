@@ -14,7 +14,13 @@ function Strings(props) {
         }).catch(console.error)
     }, [])
 
-
+    // const showPosts = () => {
+    //     return myPosts.map(post => {
+    //         return (
+    //             <li key={post._id}>{post.post}</li>
+    //         )
+    //     })
+    // }
     
     
         return (

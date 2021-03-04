@@ -10,6 +10,7 @@ const Auth = (props) => {
         .then(res=>{
             
             console.log(res)
+            props.setUser(res.data)
         })
         
         .catch(console.err)

@@ -35,12 +35,26 @@ router.get(`/Strings`, verifyToken, async (req, res, next) => {
     })
 })
 
+router.get(`/myPosts`, verifyToken, async (req, res, next) => {
+
+    jwt.verify(req.token, 'secretkey', async (err, authData) => {
+        //I'm available via AuthData
+        if (err) {
+            res.status(403).json(err);
+        } else {
+            let posts = await Post.find({ userId: authData.user._id })
+            res.status(200).json(posts)
+        }
+    })
+})
+
 router.post(`/login`, verifyToken, async(req, res, next) => {
     jwt.verify(req.token, 'secretkey', async (err, authData) => {
         if (err) {
             res.status(403).json(err);
         } else {
             let body = req.body
+            console.log(body, 'cakes')
             body.userId = authData.user._id
             let login = await Post.create(body)
             res.status(200).json(login)

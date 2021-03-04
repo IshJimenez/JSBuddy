@@ -6,6 +6,7 @@ import {Switch, Route, Link} from 'react-router-dom'
 import actions from './api'
 import Auth from './Components/Auth'
 import {useEffect, useState} from 'react';
+import Profile from './Components/Profile'
 
 function App() {
 
@@ -25,7 +26,8 @@ function App() {
       <Link to="/">Home</Link>
       <Link to="/strings">Strings</Link>
       <Link to="/login">Login</Link>
-      <Link to ='/auth'>Log In</Link>
+      {!user.email ? <Link to="/auth">Log in</Link> : <Link to="/profile">Profile</Link>}
+    
     </nav>
 
     <Switch>
@@ -33,6 +35,7 @@ function App() {
       <Route exact path="/strings" render={ (props) => <Strings {...props} /> } />
       <Route exact path="/login" render={ (props) => <Login {...props} /> } />
       <Route exact path='/auth' render={ (props) => <Auth {...props} /> } />
+      <Route exact path='/profile' render={ (props) => <Profile user={user} {...props} /> } />
     </Switch>
 
     </div>
