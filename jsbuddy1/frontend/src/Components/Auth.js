@@ -6,8 +6,12 @@ console.log(process.env)
 const Auth = (props) => {
     const onResponse= (response) => {
         console.log(response)
-        actions.logIn()
-        .then(console.log)
+        actions.logIn(response)
+        .then(res=>{
+            
+            console.log(res)
+        })
+        
         .catch(console.err)
 
 

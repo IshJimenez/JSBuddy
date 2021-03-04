@@ -20,7 +20,6 @@ const actions = {
     },
 
     logIn : async(data) => {
-        localStorage.setItem('googleTokenId', data.tokenId)
         let headerObj = resetHead()
         headerObj.headers['X-Google-Token'] = data.tokenId
         

@@ -17,6 +17,8 @@ router.get('/getStrings', async(req, res, next) => {
 router.post(`/logMeIn`, async(req, res, next) => {
     console.log('log me in please...', req.body)
     console.log("HEADERSS", req.headers)
+//     let post = await Post.create({post:req.body.login})
+//    res.status(200).json(post)
 })
 
 module.exports = router
