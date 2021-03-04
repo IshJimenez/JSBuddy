@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
-import axios from 'axios'
+import React, {useState} from 'react';
+import actions from '../api'
 
 function Login(props) {
     let[login, setLogin] = useState('')
 
     const handleSubmit = (e) => {
-        axios.post()
+        e.preventDefault()
+
+        // axios.post(`http://localhost:5000/api/login`, {login})
+        actions.addPosts(login)
+        .then(newPost => {
+            console.log('new post!', newPost)
+            //Redirect here
+            console.log(props)
+            props.history.push(`strings`)
+        })
+        .catch(console.error)
     }
 
     const handleChange = (e) => {
-        setLogin = e.return.value
+        setLogin(e.target.value)
     }
     return (
         <div>
@@ -21,5 +31,16 @@ function Login(props) {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 export default Login;
